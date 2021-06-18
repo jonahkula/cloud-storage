@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default function UpdateProfile() {
   const emailRef = useRef();
@@ -72,7 +73,7 @@ export default function UpdateProfile() {
 
           {error && <Alert variant="danger">{error}</Alert>}
 
-          <Form className="mb-3" onSubmit={handleSubmit}>
+          <Form className="mb-2" onSubmit={handleSubmit}>
             <Form.Group id="email" className="mb-2">
               <Form.Label>New Email</Form.Label>
               <Form.Control
