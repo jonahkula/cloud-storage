@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import CenteredContainer from "./CenteredContainer";
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -56,7 +57,7 @@ export default function UpdateProfile() {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/");
+        history.push("/user");
       })
       .catch(() => {
         clearPasswords();
@@ -66,7 +67,7 @@ export default function UpdateProfile() {
   }
 
   return (
-    <>
+    <CenteredContainer>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-3">Update Profile</h2>
@@ -108,8 +109,8 @@ export default function UpdateProfile() {
       </Card>
 
       <div className="w-100 text-center mt-3">
-        <Link to="/">Cancel</Link>
+        <Link to="/user">Cancel</Link>
       </div>
-    </>
+    </CenteredContainer>
   );
 }

@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import CenteredContainer from "./CenteredContainer";
 
 export default function Login() {
   const emailRef = useRef();
@@ -27,7 +28,7 @@ export default function Login() {
   }
 
   return (
-    <>
+    <CenteredContainer>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-3">Log In</h2>
@@ -58,6 +59,6 @@ export default function Login() {
       <div className="w-100 text-center mt-3">
         Don't have an account? <Link to="/signup">Sign Up</Link>
       </div>
-    </>
+    </CenteredContainer>
   );
 }
