@@ -21,9 +21,9 @@ export default function Login() {
       history.push("/");
     } catch {
       setError("Account sign in failed");
+      passwordRef.current.value = "";
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   return (

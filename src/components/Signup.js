@@ -16,6 +16,8 @@ export default function Signup() {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      passwordRef.current.value = "";
+      passwordConfirmRef.current.value = "";
       return setError("Passwords do not match");
     }
 
@@ -26,9 +28,10 @@ export default function Signup() {
       history.push("/");
     } catch {
       setError("Account creation failed");
+      passwordRef.current.value = "";
+      passwordConfirmRef.current.value = "";
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   return (
