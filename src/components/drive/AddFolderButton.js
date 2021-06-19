@@ -22,13 +22,13 @@ export default function AddFolderButton({ currentFolder }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // if (currentFolder == null) {
-    //   return;
-    // }
+    if (currentFolder == null) {
+      return;
+    }
 
     database.folders.add({
       name: name,
-      // parentId: currentFolder.id,
+      parentId: currentFolder.id,
       userId: currentUser.uid,
       // path,
       createdAt: database.getCurrentTimestamp(),

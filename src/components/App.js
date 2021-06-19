@@ -16,6 +16,7 @@ function App() {
         <Switch>
           {/* cloud storage routes */}
           <PrivateRoute exact path="/" component={Dashboard} />
+          <PrivateRoute exact path="/folder/:folderId" component={Dashboard} />
 
           {/* profile routes */}
           <PrivateRoute path="/user" component={Profile} />
