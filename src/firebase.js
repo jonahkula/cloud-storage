@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
 
 // comment out for using development version of firebase project
 const app = firebase.initializeApp({
@@ -20,6 +21,13 @@ const app = firebase.initializeApp({
 //   messagingSenderId: process.env.REACT_APP_FB_MESSAGING_SENDER_ID_PROD,
 //   appId: process.env.REACT_APP_FB_APP_ID_PROD,
 // });
+
+const firestore = app.firestore();
+export const database = {
+  folders: firestore.collection("folders"),
+  files: firestore.collection("files"),
+  getCurrentTimestamp: firebase.firestore.FieldValue.serverTimestamp,
+};
 
 export const auth = app.auth();
 
