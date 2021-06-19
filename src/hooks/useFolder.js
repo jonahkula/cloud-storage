@@ -8,7 +8,7 @@ const ACTIONS = {
   SET_CHILD_FOLDERS: "set-child-folders",
 };
 
-const ROOT_FOLDER = {
+export const ROOT_FOLDER = {
   name: "Root",
   id: null,
   path: [],
@@ -20,8 +20,8 @@ function reducer(state, { type, payload }) {
       return {
         folderId: payload.folderId,
         folder: payload.folder,
-        childFolders: [],
         childFiles: [],
+        childFolders: [],
       };
     case ACTIONS.UPDATE_FOLDER:
       return {
@@ -77,17 +77,17 @@ export function useFolder(folderId = null, folder = null) {
   }, [folderId]);
 
   useEffect(() => {
-    return (
-      database.folders
-        .where("parentId", "==", folderId)
-        .where("userId", "==", currentUser.uid)
-        // .orderBy("createdAt")
-        .onSnapshot((snapshot) => {
-          dispatch({
-            type: ACTIONS.SET_CHILD_FOLDERS,
-            payload: { childFolders: snapshot.docs.map(database.formatDoc) },
-          });
-        })
-    );
+    return database.folders
+      .where("parentId", "==", folderId)
+      .where("userId", "==", currentUser.uid)
+      .orderBy("createdAt")
+      .onSnapshot((snapshot) => {
+        dispatch({
+          type: ACTIONS.SET_CHILD_FOLDERS,
+          payload: { childFolders: snapshot.docs.map(database.formatDoc) },
+        });
+      });
   }, [folderId, currentUser]);
+
+  return state;
 }

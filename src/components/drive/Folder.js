@@ -8,9 +8,9 @@ export default function Folder({ folder }) {
   return (
     <Button
       to={`/folder/${folder.id}`}
-      as={Link}
       variant="outline-dark"
       className="text-truncate w-100"
+      as={Link}
     >
       <FontAwesomeIcon icon={faFolder} className="mr-2" />
       {folder.name}
