@@ -5,6 +5,7 @@ import Profile from "./authentication/Profile";
 import PrivateRoute from "./authentication/PrivateRoute";
 import ForgotPassword from "./authentication/ForgotPassword";
 import UpdateProfile from "./authentication/UpdateProfile";
+import Dashboard from "./drive/Dashboard";
 import { AuthProvider } from "../contexts/AuthContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -14,6 +15,7 @@ function App() {
       <AuthProvider>
         <Switch>
           {/* cloud storage routes */}
+          <PrivateRoute exact path="/" component={Dashboard} />
 
           {/* profile routes */}
           <PrivateRoute path="/user" component={Profile} />
